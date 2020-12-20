@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>Express</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+
+  <body>
+    <h1>Egoid Data API</h1>
+    <p>
+      <pre>/data/tasks</pre>
+    </p>
+    <p>
+      <pre>/data/task/:id</pre>
+    </p>
+    <p>
+      <pre>/data/quest/tasks</pre>
+    </p>
+
+    <form method="POST" action="/data/task">
+      <h3>Task Update</h3>
+      <label>
+        Quest ID
+        <input name="quest_id" type="number" />
+      </label>
+
+      <label>
+        Name
+        <input name="name" type="text" />
+      </label>
+
+      <label>
+        Description
+        <textarea name="description" cols="30" rows="10"></textarea>
+      </label>
+
+      <label>
+        Emotion
+        <input name="emotion" type="range" min="1" max="3" step="1" />
+      </label>
+    </form>
+  </body>
+</html>
