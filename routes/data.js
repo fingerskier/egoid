@@ -13,29 +13,5 @@ router.get('/', async(req, res, next)=>{
   res.render('data', { title: 'Egoid Data' }); 
 });
 
-router.get('/tasks', async(req, res, next)=>{
-  db.all('select rowid,* from tasks', (err,result)=>{
-    if (err) console.error(err)
-    res.json(result)
-  })
-});
-
-router.get('/task/:id', async(req,res,next)=>{
-  const {id} = req.params
-
-  db.all(`select * from tasks where rowid=${id}`, (err,result)=>{
-    if (err) console.error(err)
-    res.json(result)
-  })
-})
-
-router.post('/task', async(req,res,next)=>{
-  const {data} = req.body
-
-  db.all(`select * from tasks where rowid=${id}`, (err,result)=>{
-    if (err) console.error(err)
-    res.json(result)
-  })
-})
 
 module.exports = router

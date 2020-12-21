@@ -1,11 +1,17 @@
 #!/usr/bin/env node
 
 const app = require('../app');
+const opn = require('better-opn')
 const debug = require('debug')('egoid:server');
 const getPort = require('get-port')
 const http = require('http');
 
+let port = 3000
+
+process.env.OPEN_MATCH_HOST_ONLY = 'true'
+
 main()
+// .then(()=>opn(`http://localhost:${port}`))
 .catch(err=>console.error(err))
 
 /**
@@ -20,7 +26,7 @@ async function main() {
     debug('Listening on ' + bind);
   }
   
-  let port = process.env.PORT || await getPort({port: 3000})
+  port = process.env.PORT || await getPort({port: 3000})
   port = normalizePort(port)
   app.set('port', port);
   

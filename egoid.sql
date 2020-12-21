@@ -1,11 +1,5 @@
-CREATE TABLE "games" (
-	"name"	TEXT NOT NULL DEFAULT 'New Game',
-	"description"	TEXT
-);
-
-
 CREATE TABLE "quests" (
-	"game_id"	INTEGER NOT NULL DEFAULT 0,
+	"parent_id"	INTEGER NOT NULL DEFAULT 0,
 	"name"	TEXT NOT NULL DEFAULT 'New Quest',
 	"description"	TEXT
 );
