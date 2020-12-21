@@ -1,6 +1,11 @@
 {
   "name": "egoid",
   "version": "0.1.0",
+
+  "bin": {
+    "egoid": "./bin/www"
+  },
+
   "scripts": {
     "start": "node ./bin/www",
     "test": "nodemon ./bin/www"
