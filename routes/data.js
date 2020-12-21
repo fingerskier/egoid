@@ -10,7 +10,7 @@ const db = new sqlite.Database(dbfile)
 
 
 router.get('/', async(req, res, next)=>{
-  res.render('data.html', { title: 'Egoid Data' }); 
+  res.render('data', { title: 'Egoid Data' }); 
 });
 
 router.get('/tasks', async(req, res, next)=>{
