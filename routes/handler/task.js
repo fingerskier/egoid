@@ -7,9 +7,10 @@ const db = new sqlite.Database(dbfile)
 
 module.exports = {
   create: async(req,res,next)=>{
-    const data = req.body
+    const {name,description} = req.body
+    const parameters = [name,description]
   
-    db.all(`select * from tasks where rowid=${id}`, (err,result)=>{
+    db.all(`insert into tasks(name,description) values(?,?)`, parameters, (err,result)=>{
       if (err) console.error(err)
       res.json(result)
     })

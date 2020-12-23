@@ -3,7 +3,7 @@ import { get } from '../utilities'
 
 function Quest({id,name,description}) {
   const [quest, setQuest] = useState(null)
-
+  
   useEffect(() => {
     get(`quest/${id}`)
     .then(result=>setQuest(result))
@@ -12,7 +12,7 @@ function Quest({id,name,description}) {
       setQuest(null)
     }
   }, [])
-
+  
   return (
     <div>
       {id}

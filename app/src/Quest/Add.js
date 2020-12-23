@@ -16,13 +16,12 @@ function Add() {
   
   return (
     <div>
-      <h2>Add Game</h2>
+      <h2>Add Quest</h2>
       <form>
-        <label>
-          Name
-          <input ref={name} placeholder="New Quest" />
-        </label>
+        <input ref={name} placeholder="New Quest" />
+        <br/>
         <textarea ref={description} placeholder="Description"></textarea>
+        <br/>
         <button onClick={save}>Save</button>
       </form>
     </div>

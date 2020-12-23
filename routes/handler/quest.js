@@ -36,7 +36,7 @@ module.exports = {
   read: async(req, res, next)=>{
     const {id} = req.params
 
-    debug(`quest.read`)
+    debug(`quest:read`)
     
     db.all('select rowid,* from quests where rowid=?', [id], (err,result)=>{
       if (err) console.error(err)
@@ -44,7 +44,7 @@ module.exports = {
     })
   },
   
-  readAll: async(req, res, next)=>{
+  readChildren: async(req, res, next)=>{
     debug('quest:readAll')
     const {parent_id} = req.params || 0
     
@@ -57,6 +57,21 @@ module.exports = {
     db.all(sql, parameters, (err,result)=>{
       if (err) debug(err)
       debug('quest:readAll',result)
+      res.json(result)
+    })
+  },
+  
+  readParents: async(req, res, next)=>{
+    debug('quest:readParents')
+    const {parent_id} = req.params || 0
+    
+    const sql = `select * from quests where rowid in ( select distinct parent_id from quests )`
+    const parameters = [parent_id]
+    debug('quest:readAll',sql,parameters)
+    
+    db.all(sql, parameters, (err,result)=>{
+      if (err) debug(err)
+      debug('quest:readParents',result)
       res.json(result)
     })
   },
