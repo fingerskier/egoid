@@ -8,8 +8,13 @@ const db = new sqlite.Database(dbfile)
 
 module.exports = {
   create: async(req, res, next)=>{
-    const {name,description} = req.body
-    db.all(`insert into quests(name,description) values(?,?)`, [name,description], (err,result)=>{
+    const {parent_id,name,description} = req.body
+    
+    const sql = `insert into quests(parent_id,name,description) values(?,?,?)`
+    const parameters = [parent_id,name,description]
+
+    debug('quest:create', sql, parameters)
+    db.all(sql, parameters, (err,result)=>{
       if (err) console.error(err)
       res.json(result)
     })
@@ -45,18 +50,17 @@ module.exports = {
   },
   
   readChildren: async(req, res, next)=>{
-    debug('quest:readAll')
     const {parent_id} = req.params || 0
     
-    debug('quest:readAll', parent_id)
+    debug('quest:readChildren', parent_id)
 
     const sql = 'select rowid,* from quests where parent_id=?'
     const parameters = [parent_id]
-    debug('quest:readAll',sql,parameters)
+    debug('quest:readChildren',sql,parameters)
     
     db.all(sql, parameters, (err,result)=>{
       if (err) debug(err)
-      debug('quest:readAll',result)
+      debug('quest:readChildren',result)
       res.json(result)
     })
   },

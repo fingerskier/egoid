@@ -1,28 +1,35 @@
 import React,{useEffect,useRef} from 'react'
 import {put} from '../utilities'
 
-function Add() {
+function Add({parent_id=0}) {
   const description = useRef(null)
   const name = useRef(null)
+
+  const title = parent_id ? 'Add Sub-Quest' : 'Add Quest Line'
   
   function save(event) {
+    event.preventDefault()
+    
     const data = {
-      name: name.current.value,
       description: description.current.value,
+      name: name.current.value,
+      parent_id: parent_id,
     }
     
-    put('data/quest', data)
+    put('quest', data)
+    
+    return false
   }
   
   return (
     <div>
-      <h2>Add Quest</h2>
-      <form>
+      <h2>{title}</h2>
+      <form onSubmit={save}>
         <input ref={name} placeholder="New Quest" />
         <br/>
         <textarea ref={description} placeholder="Description"></textarea>
         <br/>
-        <button onClick={save}>Save</button>
+        <button>Save</button>
       </form>
     </div>
   )

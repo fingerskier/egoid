@@ -47,10 +47,19 @@ module.exports = {
   },
   
   update: async(req,res,next)=>{
-    const {id} = req.params
-    const {data} = req.body
-  
-    db.all(`select * from tasks where rowid=${id}`, (err,result)=>{
+    const data = req.body
+
+    let sql = [`update tasks set`]
+    let parameters = []
+
+    for (let key in data) {
+      sql.push(`${key} = ?`)
+      parameters.push(data[key])
+    }
+
+    sql = sql.join(',')
+    
+    db.all(sql, parameters, (err,result)=>{
       if (err) console.error(err)
       res.json(result)
     })
