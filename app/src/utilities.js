@@ -89,4 +89,4 @@ async function put(url = '', data = {}) {
   }  
 }
 
-export {del,get,post,put}
+export {del,get,post,put,}

@@ -6,12 +6,13 @@ const router = express.Router();
 const task = require('./handler/task')
 
 
-router.get('/tasks', task.readAll);
+router.get('/all/:quest_id', task.readAll);
 
-router.get('/task/:id', task.read)
+router.put('/', task.create)
 
-router.post('/task/:id', task.update)
+router.get('/:id', task.read)
 
-router.put('/task', task.create)
+router.post('/:id', task.update)
+
 
 module.exports = router

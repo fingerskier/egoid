@@ -1,11 +1,12 @@
 import React,{useEffect,useState} from 'react'
 import {get} from '../utilities'
 import AddTask from "../Task/Add";
+import Task from "../Task/Task";
 
 function Tasks({quest_id=0}) {
   const [quest, setQuest] = useState({name:'Top Level'})
   const [tasks, setTasks] = useState([])
-  
+
   useEffect(() => {
     console.log(quest_id)
     get(`task/${quest_id}`)
@@ -19,19 +20,15 @@ function Tasks({quest_id=0}) {
     get(`task/all/${quest_id}`)
     .then(result=>setTasks(result))
   }, [quest_id])
-  
+
   return (
-    <div>
-      <h1>{quest.name}</h1>
+    <div className="tasks">
+      Tasks
       <br/>
+      <AddTask quest_id={quest_id} />
       {tasks.map(el=><div key={el.rowid}>
         <hr/>
-        <Tasks
-          parent_id={el.rowid}
-          name={el.name}
-        />
-        
-        <AddTask parent_id={el.rowid} />
+        <Task id={el.rowid} />
       </div>)}
     </div>
   )

@@ -3,6 +3,39 @@ body {
   color: greenyellow;
 }
 
+form {
+  display: inline-block;
+  border: thin solid grey;
+  margin: 0.5rem;
+  padding: 0  0.5rem 0.5rem 0.5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+.children {
+  border: thin solid green;
+  margin: 0.5rem;
+}
+
 .invisible {
   display: none;
+}
+
+.list {
+  margin: 0.5rem;
+  border: thin solid green;
+  border-left: double solid green;
+}
+
+.quest {
+  margin: 0.5rem;
+  border: 7px ridge green;
+}
+
+.tasks {
+  border: thin solid purple;
+  margin: 0.5rem;
 }

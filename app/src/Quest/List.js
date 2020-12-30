@@ -22,7 +22,7 @@ function Quests({parent_id=0}) {
   }, [parent_id])
   
   return (
-    <div>
+    <div className="list">
       <h1>{parent.name}</h1>
       <br/>
       {quests.map(el=><div key={el.rowid}>

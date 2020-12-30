@@ -1,5 +1,5 @@
 require('dotenv').config()
-const debug = require('debug')('egoid:server');
+const debug = require('debug')('egoid:quest');
 const path = require('path')
 const sqlite = require('sqlite3')
 
